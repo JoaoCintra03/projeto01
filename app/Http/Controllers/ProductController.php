@@ -10,9 +10,9 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $clients = Client::get();
+        $products = Product::get();
         return view('products.index', [
-            'products' => $clients
+            'products' => $products
         ]);
     }
 
@@ -20,7 +20,7 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
 
-        return view('product.show', [
+        return view('products.show', [
             'product' => $product
         ]);
     }

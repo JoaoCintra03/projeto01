@@ -27,19 +27,19 @@
           </tr>
         </thead>
         <tbody>
-          @foreach($products as $product)
+          <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <tr>
-              <td>{{ $product->id }}</td>
-              <td>{{ $product->nome }}</td>
-              <td>{{ $product->marca }}</td>
-              <td>R$ {{ number_format($product->preco, 2, ',', '.') }}</td>
+              <td><?php echo e($product->id); ?></td>
+              <td><?php echo e($product->nome); ?></td>
+              <td><?php echo e($product->marca); ?></td>
+              <td>R$ <?php echo e(number_format($product->preco, 2, ',', '.')); ?></td>
               <td>
-                <a href="{{ route('products.show', $product) }}" class="btn btn-primary btn-sm">
+                <a href="<?php echo e(route('products.show', $product)); ?>" class="btn btn-primary btn-sm">
                   Ver detalhes
                 </a>
               </td>
             </tr>
-          @endforeach
+          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </tbody>
       </table>
     </div>
@@ -47,3 +47,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   </body>
 </html>
+<?php /**PATH C:\Users\UniALFA\Documents\desenvolvimento_laravel\projeto01\resources\views/products/index.blade.php ENDPATH**/ ?>
