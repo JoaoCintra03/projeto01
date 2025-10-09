@@ -48,4 +48,4 @@
 <a class="btn btn-success" href="<?php echo e(route('clients.create')); ?>">Novo Cliente</a>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Usuario\Documents\frameworks-php\projeto01\resources\views/clients/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Usuario\Documents\desenvolvimento_laravel\projeto01\resources\views/clients/index.blade.php ENDPATH**/ ?>

@@ -1,9 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClientController;
-use App\Http\Controllers\ProductController;
-use App\Models\Client;
-use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,14 +22,27 @@ Route::get('/', function () {
 
 
 /**
+ * Autenticação
+ * Autorização
+ */
+
+/**
  * 1. método HTTP
  * 2. Recurso (Clients)
  * 3. Controller = ClientController (classe)
  * 4. Método da classe
  */
-Route::get('/clients', [ClientController::class, 'index']);
-Route::get('/clients/{id}', [ClientController::class, 'show'])->name('clients.show');
+Route::middleware(['auth', 'is_admin'])->group(function(){
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/clients', [ClientController::class, 'index']);
+    Route::get('/clients/create', [ClientController::class, 'create'])->name('clients.create');
+    Route::get('/clients/{id}', [ClientController::class, 'show'])->name('clients.show');
+    Route::get('/clients/{id}/edit', [ClientController::class, 'edit'])->name('clients.edit');
+    Route::post('/clients', [ClientController::class, 'store'])->name('clients.store');
+    Route::put('/clients/{id}', [ClientController::class, 'update'])->name('clients.update');
+    Route::delete('/clients/{id}', [ClientController::class, 'destroy'])->name('clients.destroy');
+});
 
+Auth::routes();
 
-Route::get('/products', [ProductController::class, 'index']);
-Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
